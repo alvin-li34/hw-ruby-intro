@@ -53,6 +53,13 @@ end
 # Part 3
 
 class BookInStock
-  :isbn
-  :price
+  attr_accessor :price, :isbn
+  def initialize(isbn, price)
+    raise ArgumentError,"Argument is invalid" if isbn.empty? || price <= 0.0
+    @price = price
+    @isbn = isbn
+  end
+  def price_as_string
+    return "$#{sprintf('%.2f',price).to_s}"
+  end
 end
